@@ -70,7 +70,7 @@
                 </div>
             </div>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada! (Demo)');">
+            <form class="contact-form" onsubmit="enviarWhatsApp(event)">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
                     <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
@@ -109,5 +109,29 @@
             <p>Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> e muito código</p>
         </div>
     </footer>
-</body>
+    <script>
+    function enviarWhatsApp(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const assunto = document.getElementById("assunto").value;
+        const mensagem = document.getElementById("mensagem").value;
+
+        const texto = `Olá, Gabriel!
+
+    Nome: ${nome}
+    Email: ${email}
+    Assunto: ${assunto}
+
+    Mensagem:
+    ${mensagem}`;
+
+        const numero = "5561999479850";
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+        window.open(url, "_blank");
+    }
+    </script>
+    </body>
 </html>
